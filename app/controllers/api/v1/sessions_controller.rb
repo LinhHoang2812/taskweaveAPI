@@ -4,7 +4,7 @@ rescue_from ActiveRecord::RecordNotFound  ,with: :invalid_credential
 
 
     def create
-        if user.authenticate(params.require(:password))
+        if @user.authenticate(params.require(:password))
             token = WebToken.encode(user.id)
             render json: {token:token}, status: 200
         else
