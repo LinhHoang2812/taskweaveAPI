@@ -1,5 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
-before_action :verify_jwt, except: [:create,:oauth_signin]
+skip_before_action :verify_jwt
+before_action :set_user, only: [:create]
 rescue_from ActiveRecord::RecordNotFound  ,with: :invalid_credential
 
 
@@ -36,7 +37,7 @@ rescue_from ActiveRecord::RecordNotFound  ,with: :invalid_credential
 
 
 
-    def user 
+    def set_user 
         @user = User.find_by(email: params[:email])
         raise ActiveRecord::RecordNotFound if !@user
         @user
