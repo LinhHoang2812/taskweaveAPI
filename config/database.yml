@@ -82,6 +82,8 @@ test:
 production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
-  database: todo_list_api_production
-  username: todo_list_api
-  password: <%= ENV["TODO_LIST_API_DATABASE_PASSWORD"] %>
+  database: postgres
+  username: postgres.zccejpinaytfzdsudzrv
+  port: 5432
+  host: aws-0-eu-central-1.pooler.supabase.com
+  password: <%= ENV["DATABASE_PASSWORD"] %>
