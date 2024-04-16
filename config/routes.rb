@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       delete "day_tasks/:id",to: "tasks#delete_day_task"
       get "weekly_tasks", to: "tasks#get_weekly_tasks"
       get "today_tasks", to: "tasks#get_today_tasks"
+      get "daily_tasks", to: "tasks#get_daily_tasks"
 
       put "update_projects_multiple", to: "projects#update_projects_multiple"
       put "update_sections_multiple", to: "sections#update_sections_multiple"

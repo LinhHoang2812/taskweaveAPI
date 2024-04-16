@@ -97,6 +97,12 @@ class Api::V1::TasksController < ApplicationController
         render json: @weekly_tasks, status:200     
     end
 
+    def get_daily_tasks
+        tasks = Task.where(user_id: @current_user.id, due_date: params[:date],taskable_id: nil,taskable_type: nil).order(:position)
+        render json: tasks,status:200
+        
+    end
+
 
 
     def create_day_task
